@@ -6,6 +6,9 @@
 	<groupId>br.com.quicklabs</groupId>
 	<artifactId>spring-cloud-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>spring-cloud-eureka-server</module>
+	</modules>
     <packaging>pom</packaging>
 
 	<name>spring-cloud-eureka</name>
