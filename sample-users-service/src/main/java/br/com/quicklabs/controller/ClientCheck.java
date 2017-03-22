@@ -1,4 +1,4 @@
-package br.com.quicklabs.service;
+package br.com.quicklabs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -28,7 +28,7 @@ public class ClientCheck {
         String result = "";
         for (int i = 0; i < 10; i++) {
             String valueReceived = this.restTemplate.getForObject("http://clients-service/status", String.class);
-            result = result.concat(i + "=>");
+            result = result.concat(i + "=> ");
             result = result.concat(valueReceived);
             result = result.concat("\n");
         }
