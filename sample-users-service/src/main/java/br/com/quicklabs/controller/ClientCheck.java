@@ -1,6 +1,7 @@
 package br.com.quicklabs.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -38,8 +39,9 @@ public class ClientCheck {
         return result;
     }
 
-    @RequestMapping(value = "/hystrix", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallbackHystrix")
+    @RequestMapping(value = "/hystrix-fallback", method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "fallbackHystrix", groupKey = "ClientCheck")
+    @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
     public String hystrixCheck() throws Exception {
         if (true) {
             throw new Exception();
