@@ -19,7 +19,7 @@ public class Info {
     @Value("${server.port}")
     String port;
 
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
     public Application getServerData() {
         return new Application(applicationName, port);
     }
